@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* 基础颜色 */
+    --background: 0 0% 100%;
+    --foreground: 142 10% 15%;
+
+    /* 卡片 */
+    --card: 0 0% 100%;
+    --card-foreground: 142 10% 15%;
+
+    /* 弹出层 */
+    --popover: 0 0% 100%;
+    --popover-foreground: 142 10% 15%;
+
+    /* 主色调 - 绿色 */
+    --primary: 142 70% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    /* 次要色调 */
+    --secondary: 142 20% 95%;
+    --secondary-foreground: 142 50% 25%;
+
+    /* 静音色调 */
+    --muted: 142 10% 95%;
+    --muted-foreground: 142 5% 45%;
+
+    /* 强调色 */
+    --accent: 142 30% 92%;
+    --accent-foreground: 142 60% 25%;
+
+    /* 危险色 */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* 边框和输入框 */
+    --border: 142 10% 90%;
+    --input: 142 10% 90%;
+    --ring: 142 70% 35%;
+
+    /* 酒店预订网站特定颜色 - 绿色系列 */
+    --hotel-50: 142 80% 97%;
+    --hotel-100: 142 75% 94%;
+    --hotel-200: 142 70% 87%;
+    --hotel-300: 142 65% 75%;
+    --hotel-400: 142 60% 60%;
+    --hotel-500: 142 55% 45%;
+    --hotel-600: 142 60% 35%;
+    --hotel-700: 142 65% 25%;
+    --hotel-800: 142 70% 20%;
+    --hotel-900: 142 75% 15%;
+    --hotel-950: 142 80% 10%;
+
+    /* 圆角 */
+    --radius-sm: 0.3rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.8rem;
+
+    /* 阴影 */
+    --shadow-hotel-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-hotel-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-hotel-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .dark {
+    /* 基础颜色 */
+    --background: 142 25% 10%;
+    --foreground: 142 5% 95%;
+
+    /* 卡片 */
+    --card: 142 30% 12%;
+    --card-foreground: 142 5% 95%;
+
+    /* 弹出层 */
+    --popover: 142 35% 12%;
+    --popover-foreground: 142 5% 95%;
+
+    /* 主色调 - 绿色 */
+    --primary: 142 60% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    /* 次要色调 */
+    --secondary: 142 20% 20%;
+    --secondary-foreground: 142 5% 95%;
+
+    /* 静音色调 */
+    --muted: 142 15% 18%;
+    --muted-foreground: 142 5% 65%;
+
+    /* 强调色 */
+    --accent: 142 25% 25%;
+    --accent-foreground: 142 5% 95%;
+
+    /* 危险色 */
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* 边框和输入框 */
+    --border: 142 15% 25%;
+    --input: 142 15% 25%;
+    --ring: 142 60% 40%;
+
+    /* 酒店预订网站特定颜色 - 绿色系列 (暗色模式) */
+    --hotel-50: 142 20% 20%;
+    --hotel-100: 142 25% 25%;
+    --hotel-200: 142 30% 30%;
+    --hotel-300: 142 35% 35%;
+    --hotel-400: 142 40% 40%;
+    --hotel-500: 142 45% 45%;
+    --hotel-600: 142 50% 50%;
+    --hotel-700: 142 55% 55%;
+    --hotel-800: 142 60% 60%;
+    --hotel-900: 142 65% 65%;
+    --hotel-950: 142 70% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* 自定义滚动条 */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--hotel-300));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--hotel-400));
+  }
+}
+
+/* 自定义组件样式 */
+@layer components {
+  /* 酒店卡片悬停效果 */
+  .hotel-card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1;
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  /* 渐变背景 */
+  .hotel-gradient-bg {
+    @apply bg-gradient-to-r from-hotel-50 to-hotel-100;
+  }
+
+  /* 主按钮样式 */
+  .hotel-btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-hotel-700 transition-colors;
+  }
+
+  /* 次要按钮样式 */
+  .hotel-btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-hotel-200 transition-colors;
+  }
+
+  /* 标题样式 */
+  .hotel-heading {
+    @apply text-hotel-800 font-bold;
+  }
+
+  /* 价格标签 */
+  .hotel-price-tag {
+    @apply text-hotel-700 font-bold;
+  }
+}
+
+/* 动画效果 */
+@layer utilities {
+  .animate-hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+
+  .animate-hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+
+  .animate-hover-shadow {
+    transition: box-shadow 0.3s ease;
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+  }
+}
